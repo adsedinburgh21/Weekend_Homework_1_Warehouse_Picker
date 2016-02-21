@@ -30,7 +30,7 @@ end
 # end
 
 
-# #  #3: Return Multiple Items
+# #  #3 & #5: Return Multiple Items
 def return_multi_items(*bays)
   items = []
   for bay in bays
@@ -39,7 +39,7 @@ def return_multi_items(*bays)
   return items
 end
 
-# #  #3:Calculate number of bays seperating the bays in use
+# #  #3 & #5: Calculate number of bays seperating the bays in use
 def number_of_bays_apart(*bays)
   array_of_bays=@warehouse.keys
   bays_in_use = []
@@ -58,15 +58,24 @@ def return_multi_bays(*items)
   end
   return bays
 end
+# #  #5: I did not write any new functions for question 5 as the functions I created to answer question 3 also work to answer question 5. I have written new tests for question 5.
 
 
-
-
-
-
-
-
-
-
-
-
+#  # #6
+def ordered_bays(*items)
+  bays_to_target = []
+  unordered_index_of_bays = []
+  bays_to_visit_in_order = []
+  all_bays = @warehouse.keys               # => array of all keys
+  for item in items
+    bays_to_target << @warehouse.key(item)
+  end
+  for bay in bays_to_target
+    unordered_index_of_bays << all_bays.index(bay)
+  end
+  ordered_index_of_bays_to_visit = unordered_index_of_bays.sort
+  for individual_index in ordered_index_of_bays_to_visit
+    bays_to_visit_in_order << all_bays[individual_index]
+  end
+  return bays_to_visit_in_order
+end

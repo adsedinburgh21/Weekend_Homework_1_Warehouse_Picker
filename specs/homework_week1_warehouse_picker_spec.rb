@@ -41,7 +41,7 @@ class TestHomeworkWeek1WarehousePicker < MiniTest::Test
 
   #   #1
   def test_return_item()
-    result= return_item(:b5)
+    result = return_item(:b5)
     assert_equal("nail filer", result)
   end
 
@@ -49,7 +49,7 @@ class TestHomeworkWeek1WarehousePicker < MiniTest::Test
   #  #2
   def test_return_bay()
     result = return_bay("nail filer")
-    assert_equal(:b5, result)
+    assert_equal(:b5, result )
   end
 
 
@@ -60,33 +60,33 @@ class TestHomeworkWeek1WarehousePicker < MiniTest::Test
   end
 
   def test_number_of_bays_apart()
-    result= number_of_bays_apart(:b5, :b10, :b6)
-    assert_equal( 5, result)
+    result = number_of_bays_apart(:b5, :b10, :b6)
+    assert_equal(5, result)
   end
 
 
   #  #4
   def test_return_multi_bays()
-    result= return_multi_bays("shoe lace", "rusty nail", "leg warmers")
+    result = return_multi_bays("shoe lace", "rusty nail", "leg warmers")
     assert_equal([:c9, :c1, :c10], result)
   end
 
 
+  #  #5
+  def test_return_multi_items_and_bays_apart()
+    result1 = return_multi_items(:b3, :c7, :c9, :a3)
+    result2 = number_of_bays_apart(:b3, :c7, :c9, :a3)
+    assert_equal(["picture frame", "paint brush", "shoe lace", "blouse"], result1)
+    assert_equal(15, result2)
+  end
+  #  #5: I did not write any new functions for question 5 as the functions I created to answer question 3 also work to answer question 5. I have written new tests for question 5 above.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+  #  #6
+  def test_ordered_bays()
+    result= ordered_bays("hanger", "deodorant", "candy wrapper", "rubber band")
+    assert_equal([:a10, :a4, :c8, :b9], result)
+  end
 end
 
 
